@@ -1,63 +1,66 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Header.css';
-import {Link} from "react-router-dom";
-import SearchIcon from '@material-ui/icons/Search';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import React from "react";
+import "./Header.css";
+import { Link } from "react-router-dom";
+import SearchIcon from "@material-ui/icons/Search";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { useStateValue } from "../../StateProvider";
 
-const Header = () => (
-  <nav className="navBar">
-  {/*Logo on the left*/ }
-  <Link to="/">
-    <img className="navBar__logo" 
-    src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-    alt="Logo"
-  />
-  </Link>
-  {/*Searchbox*/}
-  <div className="navBar__search">
-    <input type="text" className="navBar__searchInput"/>
-    <SearchIcon className="navBar__searchIcon"/>
-  </div>
+function Header() {
+	const [{ basket }, dispatch] = useStateValue();
 
-  {/*Links*/}
-  <div className="navBar__Links">
-    <Link to="/login" className="navBar__Links__Link">
-      <div className="navBar__Links__Text">
-        <text className="navBar__Links__TextLineOne">Hello</text>
-        <text className="navBar__Links__TextLineTwo">Sign In</text>
-      </div>
-    </Link>
+	return (
+		<nav className="navBar">
+			{/*Logo on the left*/}
+			<Link to="/">
+				<img
+					className="navBar__logo"
+					src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+					alt="Logo"
+				/>
+			</Link>
+			{/*Searchbox*/}
+			<div className="navBar__search">
+				<input type="text" className="navBar__searchInput" />
+				<SearchIcon className="navBar__searchIcon" />
+			</div>
 
-    <Link to="/" className="navBar__Links__Link">
-      <div className="navBar__Links__Text">
-        <text className="navBar__Links__TextLineOne">Return</text>
-        <text className="navBar__Links__TextLineTwo">Orders</text>
-      </div>
-    </Link>
+			{/*Links*/}
+			<div className="navBar__Links">
+				<Link to="/login" className="navBar__Links__Link">
+					<div className="navBar__Links__Text">
+						<p className="navBar__Links__TextLineOne">Hello</p>
+						<p className="navBar__Links__TextLineTwo">Sign In</p>
+					</div>
+				</Link>
 
-    <Link to="/" className="navBar__Links__Link">
-      <div className="navBar__Links__Text">
-        <text className="navBar__Links__TextLineOne">Your</text>
-        <text className="navBar__Links__TextLineTwo">Prime</text>
-      </div>
-    </Link>
-  </div>
+				<Link to="/" className="navBar__Links__Link">
+					<div className="navBar__Links__Text">
+						<p className="navBar__Links__TextLineOne">Return</p>
+						<p className="navBar__Links__TextLineTwo">Orders</p>
+					</div>
+				</Link>
 
-  {/*Basket icon*/}
-  <Link to="/checkout" className="navBar__Links__Link">
-    <div className="navBar__basket">
-      {/*Icon */}
-      <ShoppingBasketIcon/>
-      {/*# of Items */}
-      <span className="navBar__Links__TextLineTwo navBar__basketCount">0</span>
-    </div>
-  </Link>
-</nav>
-);
+				<Link to="/" className="navBar__Links__Link">
+					<div className="navBar__Links__Text">
+						<p className="navBar__Links__TextLineOne">Your</p>
+						<p className="navBar__Links__TextLineTwo">Prime</p>
+					</div>
+				</Link>
+			</div>
 
-Header.propTypes = {};
-
-Header.defaultProps = {};
+			{/*Basket icon*/}
+			<Link to="/checkout" className="navBar__Links__Link">
+				<div className="navBar__basket">
+					{/*Icon */}
+					<ShoppingBasketIcon />
+					{/*# of Items */}
+					<span className="navBar__Links__TextLineTwo navBar__basketCount">
+						{basket?.length}
+					</span>
+				</div>
+			</Link>
+		</nav>
+	);
+}
 
 export default Header;
