@@ -3,36 +3,6 @@ import Product from "../Product/Product.lazy";
 import "./Home.css";
 
 function Home() {
-	/*fetch(
-		"https://amazon-product-reviews-keywords.p.rapidapi.com/product/search?category=aps&country=US&keyword=iphone",
-		{
-			method: "GET",
-			headers: {
-				"x-rapidapi-host": "amazon-product-reviews-keywords.p.rapidapi.com",
-				"x-rapidapi-key": "76adc74eedmsh91d89ddff8a9617p19c6ccjsnb5c8f617463c",
-			},
-		}
-	)
-		.then((response) => {
-			console.log(response.json());
-		})
-		.catch((err) => {
-			console.log(err);
-		});*/
-
-	/*fetch("https://amazon-deals.p.rapidapi.com/categories", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "amazon-deals.p.rapidapi.com",
-		"x-rapidapi-key": "76adc74eedmsh91d89ddff8a9617p19c6ccjsnb5c8f617463c"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.log(err);
-}); */
 	return (
 		<div className="home">
 			<div className="home__container">
