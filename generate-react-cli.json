@@ -9,7 +9,7 @@
       "withStyle": true,
       "withTest": false,
       "withStory": false,
-      "withLazy": false
+      "withLazy": true
     }
   }
 }
