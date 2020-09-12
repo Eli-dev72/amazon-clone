@@ -1,16 +1,50 @@
 import React from "react";
 import Product from "../Product/Product.lazy";
 import "./Home.css";
+import Carousel from "react-material-ui-carousel";
 
 function Home() {
+	const items = [
+		{
+			url:
+				"https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg",
+			description: "Amazon Prime Image",
+		},
+		{
+			url:
+				"https://images-na.ssl-images-amazon.com/images/G/33/img18/Prime/GW_Slot_Refresh/Resize/GW_DesktopHero_primerefreshV1_1500x600._CB455671881_.jpg",
+			description: "Envíos Amazon Prime",
+		},
+		{
+			url:
+				"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg",
+			description: "Amazon Prime Ship",
+		},
+		{
+			url:
+				"https://images-na.ssl-images-amazon.com/images/G/33/img20/Prime/Rebrand2020/Prime_AMP1_TallHero_1500x600._CB409729610_.jpg",
+			description: "Amazon Prime Benefit",
+		},
+	];
 	return (
 		<div className="home">
 			<div className="home__container">
-				<img
+				<Carousel interval={5000} indicators={false} className="home__carousel">
+					{items.map((item, i) => (
+						<img
+							className="home__image"
+							key={i}
+							src={item.url}
+							alt={item.description}
+						/>
+					))}
+				</Carousel>
+				{/* <img
 					className="home__image"
 					src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
-					alt="Amazon Prime Image"
-				/>
+					alt="Amazon Prime"
+				/> */}
+
 				<div className="home__row">
 					<Product
 						id="1"
