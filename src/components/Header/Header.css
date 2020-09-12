@@ -1,67 +1,83 @@
-.navBar{
-    background-color: #131921;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+.navBar {
+	background-color: #131921;
+	display: flex;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 100;
 }
 
-.navBar__logo{
-    width: 100px;
-    object-fit: contain;
-    margin: 0px 20px;
-    margin-top: 18px;
+.navBar__logo {
+	width: 100px;
+	object-fit: contain;
+	margin: 0px 20px;
+	margin-top: 18px;
 }
 
-.navBar__search{
-    display: flex;
-    flex:1;
+.navBar__search {
+	display: flex;
+	flex: 1;
 }
 
-.navBar__searchInput{
-    height: 12px;
-    padding: 10px;
-    border:0;
-    width: 100%;
+.navBar__searchInput {
+	height: 12px;
+	padding: 10px;
+	border: 0;
+	width: 100%;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
-.navBar__searchIcon{
-    padding: 5px;
-    height: 22px !important;
-    background-color: #cd9042;
+.navBar__searchIcon {
+	padding: 5px;
+	height: 22px !important;
+	margin-right: 5px;
+	background-color: #cd9042;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
-.navBar__Links{
-    display: flex;
-    justify-content: space-evenly;
+.navBar__searchIcon:hover {
+	background-color: #c57409;
 }
 
-.navBar__Links__Link{
-    color:white;
-    text-decoration: none;
+.navBar__Links {
+	display: flex;
+	justify-content: space-evenly;
 }
 
-.navBar__Links__Text{
-    display: flex;
-    flex-direction: column;
-    margin: 0 10px;
+.navBar__Links__Link {
+	color: white;
+	text-decoration: none;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	padding: 5px;
 }
 
-.navBar__Links__TextLineOne{
-    font-size: 10px;
+.navBar__Links__Link:hover {
+	border: 1px solid white;
 }
 
-.navBar__Links__TextLineTwo{
-    font-size: 13px;
-    font-weight: 800;
+.navBar__Links__Text {
+	display: flex;
+	flex-direction: column;
+	margin: 0 10px;
 }
 
-.navBar__basket{
-    display: flex;
-    align-items: center;
+.navBar__Links__TextLineOne {
+	font-size: 10px;
 }
 
-.navBar__basketCount{
-    margin: 0 10px;
+.navBar__Links__TextLineTwo {
+	font-size: 13px;
+	font-weight: 800;
+}
+
+.navBar__basket {
+	display: flex;
+	align-items: center;
+}
+
+.navBar__basketCount {
+	margin: 0 10px;
 }
