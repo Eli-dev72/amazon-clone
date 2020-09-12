@@ -5,7 +5,7 @@ import { useStateValue } from "../../StateProvider";
 import CheckoutProduct from "../CheckoutProduct/CheckoutProduct.lazy";
 
 function Checkout() {
-	const [{ basket }] = useStateValue();
+	const [{ basket, user }] = useStateValue();
 	return (
 		<div className="checkout">
 			<div className="checkout__left">
@@ -15,6 +15,9 @@ function Checkout() {
 					className="checkout__ad"
 				/>
 				<div>
+					<h3>
+						Hello, {user?.email.substring(0, user?.email.lastIndexOf("@"))}
+					</h3>
 					<h2 className="checkout__title">Your Shopping Basket</h2>
 				</div>
 				{basket.map((item) => (
