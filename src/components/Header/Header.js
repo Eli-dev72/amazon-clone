@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useStateValue } from "../../StateProvider";
+import { auth, db } from "../../firebase";
 
 function Header() {
-	const [{ basket }, dispatch] = useStateValue();
-
+	const [{ basket, user }, dispatch] = useStateValue();
+	const [email, setEmail] = useState("");
+	// useEffect(() => {
+	// 	setEmail(user.email);
+	// }, [user.email]);
+	const handleAuth = () => {
+		if (user) {
+			auth.signOut();
+		}
+	};
 	return (
 		<nav className="navBar">
 			{/*Logo on the left*/}
@@ -26,10 +35,17 @@ function Header() {
 
 			{/*Links*/}
 			<div className="navBar__Links">
-				<Link to="/login" className="navBar__Links__Link">
-					<div className="navBar__Links__Text">
-						<p className="navBar__Links__TextLineOne">Hello</p>
-						<p className="navBar__Links__TextLineTwo">Sign In</p>
+				<Link to={!user ? "/login" : "/"} className="navBar__Links__Link">
+					<div onClick={handleAuth} className="navBar__Links__Text">
+						<p className="navBar__Links__TextLineOne">
+							Hello{" "}
+							{user
+								? user?.email.substring(0, user?.email.lastIndexOf("@"))
+								: "Guest"}
+						</p>
+						<p className="navBar__Links__TextLineTwo">
+							{user ? "Sign Out" : "Sign In"}
+						</p>
 					</div>
 				</Link>
 

@@ -1,18 +1,38 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth, db } from "../../firebase";
 
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const history = useHistory();
 
 	const signIn = (e) => {
 		e.preventDefault();
+		auth
+			.signInWithEmailAndPassword(email, password)
+			.then((auth) => {
+				if (auth) {
+					console.log(auth);
+					history.push("/");
+				}
+			})
+			.catch((error) => alert(error.message));
 	};
 
 	const register = (e) => {
 		e.preventDefault();
+		console.log(e);
+		auth
+			.createUserWithEmailAndPassword(email, password)
+			.then((auth) => {
+				if (auth) {
+					console.log(auth);
+					history.push("/");
+				}
+			})
+			.catch((error) => alert(error.message));
 	};
 	return (
 		<div className="login">
@@ -23,7 +43,7 @@ function Login() {
 					className="login__logo"
 				/>
 			</Link>
-			<div class="login__container">
+			<div className="login__container">
 				<h1>Sign In</h1>
 				<form>
 					<h5>Email</h5>
